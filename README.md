@@ -14,7 +14,7 @@ Inter-Process Communication
 
 ## 🎉 What's New in v2.0.0
 
-- ✅ **Addtional Security Audit** - All critical vulnerabilities fixed
+- ✅ **Additional Security Audit** - All critical vulnerabilities fixed
 - ✅ **Secure Database Location** - Messages now stored in `~/.claude-ipc-data` with proper permissions
 - ✅ **Enhanced Security** - Token hashing, expiration, and rate limiting
 - ✅ **Improved Documentation** - Comprehensive troubleshooting and migration guides
