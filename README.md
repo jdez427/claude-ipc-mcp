@@ -1,5 +1,9 @@
 # 🤖 Claude IPC MCP - AI-to-AI Communication
 
+![Version](https://img.shields.io/badge/version-2.0.0-blue)
+![GitHub stars](https://img.shields.io/github/stars/jdez427/claude-ipc-mcp)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 > **"Can't spell EMAIL without AI!"** 📧
 > ** Runner-up catch-phrase: "You're absolutely right, we need to talk."
 
@@ -8,9 +12,17 @@ An MCP (Model Context Protocol) designed for CLI-based AI assistants to talk to 
 
 Inter-Process Communication
 
+## 🎉 What's New in v2.0.0
+
+- ✅ **Addtional Security Audit** - All critical vulnerabilities fixed
+- ✅ **Secure Database Location** - Messages now stored in `~/.claude-ipc-data` with proper permissions
+- ✅ **Enhanced Security** - Token hashing, expiration, and rate limiting
+- ✅ **Improved Documentation** - Comprehensive troubleshooting and migration guides
+- 📖 [See full changelog](CHANGELOG.md) | 📋 [Migration Guide](MIGRATION_GUIDE.md)
+
 ## 🔐 Security First
 
-**New in v1.0**: Full session-based authentication meeting recent MCP security standards. See [Security Quick Start](docs/SECURITY_QUICKSTART.md) for setup.
+**Enhanced in v2.0.0**: Focused on security hardening including secure database storage, token hashing, and rate limiting. See [Security Quick Start](docs/SECURITY_QUICKSTART.md) for setup.
 
 ## 🌟 Key Features
 
@@ -23,11 +35,13 @@ The Claude IPC MCP enables AI agent-to-AI agent communication with:
 - 📦 **Smart Large Messages** - Auto-converts >10KB messages to files
 - 🌍 **Cross-Platform** - Works with Claude Code, Gemini, and any Python-capable AI
 - 🏃 **Always Running** - 24/7 server with crash recovery and message durability
-- 🤖 **Auto-Check** - Never miss messages! Just say "start auto checking 5"
+- 🤖 **Auto-Check** - Never miss messages! Just say "start auto checking 5" (this can be enabled/disabled)
 - 🔐 **Session Security** - Authentication tokens protect your messages
 - ⚡ **UV Package Management** - Fast, modern Python dependency management
 
 ## 🚀 Quick Start
+
+> **Upgrading from v1.x?** See the [Migration Guide](MIGRATION_GUIDE.md) for important changes.
 
 ### 🔐 Step 1: Security Setup (REQUIRED)
 
@@ -42,7 +56,7 @@ echo 'export IPC_SHARED_SECRET="your-secret-key-here"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-⚠️ **Critical**: The FIRST AI to start determines if security is enabled. No secret = open mode (insecure).
+⚠️ **Critical**: The FIRST AI to start determines if security is enabled. No secret = open mode (sub-optimal but available).
 
 📚 **Full Setup Guide**: See [SETUP_GUIDE.md](docs/SETUP_GUIDE.md) for detailed instructions.
 
@@ -218,43 +232,12 @@ See [Troubleshooting Guide](docs/TROUBLESHOOTING.md) for more solutions.
 - [API Reference](docs/API_REFERENCE.md) - Protocol specification
 - [Examples](examples/) - Integration examples
 
-## 🚨 Troubleshooting
-
-### MCP Tools Not Available
-**Symptom**: Natural language commands don't work in Claude Code  
-**Solution**: 
-- Stop and resume your Claude Code session
-- Verify MCP is installed: `claude mcp list | grep claude-ipc`
-- Check for error messages when Claude Code starts
-
-### Old Installation Conflicts
-**Symptom**: MCP fails to start or behaves unexpectedly  
-**Solution**:
-- Remove old pip/venv installations: `rm -rf ~/.claude-ipc-env/ venv/ .venv/`
-- Clear old MCP configs: `claude mcp remove claude-ipc`
-- Reinstall with UV: `./scripts/install-mcp.sh`
-
-### Messages Not Persisting
-**Symptom**: Messages lost when server restarts  
-**Solution**:
-- Check SQLite database exists: `ls -la /tmp/ipc-messages.db`
-- Verify write permissions: `touch /tmp/ipc-messages.db`
-- Check disk space: `df -h /tmp`
-
-### Connection Refused Errors
-**Symptom**: Can't register or send messages  
-**Solution**:
-- Ensure at least one AI is registered (becomes server)
-- Check port 9876 is free: `nc -zv localhost 9876`
-- Verify no firewall blocking localhost connections
-
-For more detailed troubleshooting, see [TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)
 
 ## 🛠️ Development & Installation
 
 ### Prerequisites
 
-This project uses **UV** for fast, modern Python package management:
+This project uses **UV** for fast, modern Python package management (BIG thanks to jzumwalt for leading the charge):
 
 ```bash
 # Install UV (if not already installed)
@@ -265,7 +248,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/claude-ipc-mcp.git
+git clone https://github.com/jdez427/claude-ipc-mcp.git
 cd claude-ipc-mcp
 
 # Install dependencies with UV
@@ -297,14 +280,6 @@ If you previously used pip and venv:
 
 This project requires Python 3.12 or higher. UV will automatically manage the Python version for you.
 
-## 🏆 Built By
-
-Created over a weekend by:
-- **jdez** 
-- **Claude** - Initial architecture and crisis management  
-- **Barney** - Troubleshooting and documentation
-- **Fred** - Cross-platform integration
-- **Claudia** - Testing and refinement
 ## 📜 License
 
 MIT License - Use it, extend it, make AIs talk!
