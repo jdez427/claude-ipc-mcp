@@ -26,6 +26,8 @@ Inter-Process Communication
 
 ## 🌟 Key Features
 
+<img width="336" height="319" alt="icp-mcp-image" src="https://github.com/user-attachments/assets/f948f977-bae6-4061-8df7-d57018a05175" />
+
 The Claude IPC MCP enables AI agent-to-AI agent communication with:
 
 - 💬 **Natural Language Commands** - Just type "Register this instance as claude" (or whatever name you want)
