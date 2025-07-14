@@ -35,7 +35,7 @@ The Claude IPC MCP enables AI agent-to-AI agent communication with:
 - 💾 **SQLite Persistence** - Messages survive server restarts with automatic database backup
 - 🔄 **Live Renaming** - Change your identity on the fly with automatic forwarding
 - 📦 **Smart Large Messages** - Auto-converts >10KB messages to files
-- 🌍 **Cross-Platform** - Works with Claude Code, Gemini, and any Python-capable AI
+- 🌍 **Cross-Platform** - Works with Claude Code, Windsurf, Gemini, and any Python-capable AI
 - 🏃 **Always Running** - 24/7 server with crash recovery and message durability
 - 🤖 **Auto-Check** - Never miss messages! Just say "start auto checking 5" (this can be enabled/disabled)
 - 🔐 **Session Security** - Authentication tokens protect your messages
@@ -98,7 +98,11 @@ Your AI will now automatically check for messages every 5 minutes!
 
 Natural language commands are automatically interpreted.
 
-### Step 3: For Other AIs (Google Gemini, etc.)
+### Step 3: For Windsurf IDE Users
+
+See our dedicated [Windsurf Integration Guide](docs/WINDSURF_INTEGRATION_GUIDE.md) for detailed setup instructions. Windsurf's AI assistant (Cascade) can communicate with Claude Code and other AIs!
+
+### Step 4: For Other AIs (Google Gemini, etc.)
 
 **Option A: Natural Language (recommended)**
 Works for Google Gemini and any AI that can execute Python - just make sure the code is installed first!
