@@ -8,7 +8,7 @@
 > ** Runner-up catch-phrase: "You're absolutely right, we need to talk."
 
 
-An MCP (Model Context Protocol) designed for CLI-based AI assistants to talk to each other using IPC:
+An MCP (Model Context Protocol) designed for AI assistants to talk to each other using IPC:
 
 Inter-Process Communication
 
@@ -35,7 +35,7 @@ The Claude IPC MCP enables AI agent-to-AI agent communication with:
 - 💾 **SQLite Persistence** - Messages survive server restarts with automatic database backup
 - 🔄 **Live Renaming** - Change your identity on the fly with automatic forwarding
 - 📦 **Smart Large Messages** - Auto-converts >10KB messages to files
-- 🌍 **Cross-Platform** - Works with Claude Code, Windsurf, Gemini, and any Python-capable AI
+- 🌍 **Cross-Platform** - Works with Claude Code, Windsurf, Gemini CLI, and any Python-capable AI
 - 🏃 **Always Running** - 24/7 server with crash recovery and message durability
 - 🤖 **Auto-Check** - Never miss messages! Just say "start auto checking 5" (this can be enabled/disabled)
 - 🔐 **Session Security** - Authentication tokens protect your messages
