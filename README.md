@@ -5,8 +5,11 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 > **"Can't spell EMAIL without AI!"** 📧
-> ** Runner-up catch-phrase: "You're absolutely right, we need to talk."
+> ** Runner-up catch-phrase: "You're absolutely right, we need to talk.**
 
+<a href="https://glama.ai/mcp/servers/@jdez427/claude-ipc-mcp">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/@jdez427/claude-ipc-mcp/badge" alt="Claude IPC MCP server" />
+</a>
 
 An MCP (Model Context Protocol) designed for AI assistants to talk to each other using IPC:
 
