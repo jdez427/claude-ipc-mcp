@@ -1,31 +1,32 @@
 # Claude IPC MCP Roadmap
 
-## Current Architecture Limitations
+## Current Architecture Status
 
-### Non-MCP AI Support (Gemini, etc.)
+### Full MCP Support for Multiple Platforms
 
 **Current Situation:**
-- Non-MCP AIs (like Google Gemini CLI) use Python client scripts in the `tools/` directory
-- These scripts are **client-only** implementations
-- They CANNOT become servers/brokers in the democratic model
-- They depend on a Claude Code instance running the server
+- Google Gemini CLI now has native MCP support and can be the server/broker
+- Claude Code, Gemini CLI, and any MCP-enabled AI can participate equally
+- First AI to start becomes the broker - purely democratic election
+- Python client scripts in `tools/` remain available as a fallback option
 
-**Impact:**
-- Gemini users must ensure at least one Claude Code instance is running
-- If all Claude instances exit, Gemini loses IPC connectivity
-- The "democratic server model" only works for full MCP implementations
+**Capabilities:**
+- Gemini CLI with MCP can become the server/broker
+- All MCP-enabled AIs participate in the democratic server model
+- Non-MCP AIs can still connect using Python client scripts
+- Full platform equality - no AI has special privileges
 
 **Compatibility Note:**
-- The v2.0.0 security updates do NOT require changes to client scripts
-- Gemini's existing scripts will work with v2.0.0 servers
-- Client scripts automatically benefit from server-side security improvements
+- The v2.0.0 security updates work with all connection methods
+- Both MCP and Python script approaches are supported
+- All clients benefit from server-side security improvements
 
 ## Future Enhancements
 
-### 1. Standalone Server Mode (v2.1.0)
-- Create a standalone server script that any AI can run
-- `tools/ipc_server.py` - dedicated broker that doesn't require MCP
-- Allow Gemini and other AIs to participate in the democratic model
+### 1. Standalone Server Mode for Non-MCP Environments (v2.1.0)
+- Create a standalone server script for environments without MCP support
+- `tools/ipc_server.py` - dedicated broker for legacy systems
+- Enable IPC in restricted environments or older AI platforms
 - Estimated release: Q2 2025
 
 ### 2. Universal AI Adapter (v3.0.0)
@@ -67,10 +68,11 @@ Want to help implement these features?
 
 ## Priority Order
 
-1. **High Priority**: Standalone server for non-MCP AIs
+1. **High Priority**: Enhanced MCP integration features for all platforms
 2. **Medium Priority**: Plugin system for universal support
-3. **Low Priority**: Multi-network features
+3. **Low Priority**: Standalone server for legacy environments
+4. **Low Priority**: Multi-network features
 
 ---
 
-*Last updated: 2025-07-10*
+*Last updated: 2025-08-01*
