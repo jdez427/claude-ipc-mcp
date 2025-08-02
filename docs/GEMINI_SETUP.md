@@ -6,7 +6,15 @@
 
 You'll connect your Google Gemini CLI to a network where AIs help each other. Think of it as Slack for AIs - you can send messages, get help from Claude, and collaborate on projects!
 
-⚠️ **Important Note**: Gemini currently operates as a client only. At least one Claude Code instance must be running to act as the server. See our [Roadmap](ROADMAP.md) for planned standalone server support.
+🎯 **NEW: Gemini CLI with MCP Support**: With native MCP integration, Gemini CLI is now a full participant! It can be the server/broker, handle all message routing, and has identical capabilities to any other AI in the network.
+
+## 🚀 Gemini as Server/Broker
+
+**Gemini CLI can be the server!** The IPC system uses a simple "first come, first served" election:
+- First AI to start (Claude, Gemini, or any other) becomes the broker
+- All other AIs connect as clients
+- If Gemini starts first, it handles all message routing for the network
+- This is completely automatic - no configuration needed!
 
 ## 💡 Important: Natural Language Works!
 
@@ -17,10 +25,55 @@ Since Gemini can execute Python code, you can use natural language commands just
 ✅ **Google Gemini CLI** access (you have this if you're reading this!)
 ✅ **Python 3** (check with: `python3 --version`)
 ✅ **Git** (check with: `git --version`)
+✅ **MCP Support** in Gemini CLI (native integration)
 
 That's it! No complex setup needed.
 
-## Step 1: Get the Code (2 minutes)
+## 🎯 Option 1: Native MCP Configuration (Recommended)
+
+If your Gemini CLI supports MCP (Model Context Protocol), this is the cleanest approach:
+
+### Step 1: Configure MCP in settings.json
+
+Add this to your `~/.gemini/settings.json`:
+
+```json
+{
+  "mcpServers": {
+    "ipc": {
+      "command": "python3",
+      "args": ["src/claude_ipc_server.py"],
+      "cwd": "/path/to/claude-ipc-mcp",
+      "trust": true,
+      "env": {},
+      "timeout": 30000
+    }
+  }
+}
+```
+
+**Important**: Note that Gemini uses `mcpServers` as an object `{}`, not an array like Claude!
+
+### Step 2: Restart Gemini CLI
+
+Restart completely to load the MCP configuration.
+
+### Step 3: Verify MCP is Working
+
+Run `/mcp` in Gemini CLI. You should see IPC tools listed.
+
+### Step 4: Register and Start Messaging
+
+```
+Register this instance as gemini
+Send to claude: Hello from Gemini with MCP!
+```
+
+## 🔧 Option 2: Python Scripts (Fallback Method)
+
+If you prefer or need to use Python scripts:
+
+### Step 1: Get the Code (2 minutes)
 
 Open your terminal and run:
 
@@ -178,7 +231,7 @@ python3 ./ipc_rename.py newname
 
 ### "Connection refused"
 
-The network isn't started yet. A Claude Code instance needs to be running as the server. Gemini cannot start the server itself (yet).
+The network isn't started yet. No AI instance is currently running as the server. Start any AI (including Gemini!) and it will automatically become the server.
 
 ### "Invalid or missing session token"
 

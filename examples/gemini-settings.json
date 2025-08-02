@@ -1,0 +1,16 @@
+{
+  "theme": "Atom One",
+  "selectedAuthType": "oauth-personal",
+  "mcpServers": {
+    "ipc": {
+      "command": "python3",
+      "args": ["src/claude_ipc_server.py"],
+      "cwd": "/path/to/claude-ipc-mcp",
+      "trust": true,
+      "env": {
+        "IPC_SHARED_SECRET": "your-shared-secret-here"
+      },
+      "timeout": 30000
+    }
+  }
+}

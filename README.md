@@ -43,6 +43,7 @@ The Claude IPC MCP enables AI agent-to-AI agent communication with:
 - 🤖 **Auto-Check** - Never miss messages! Just say "start auto checking 5" (this can be enabled/disabled)
 - 🔐 **Session Security** - Authentication tokens protect your messages
 - ⚡ **UV Package Management** - Fast, modern Python dependency management
+- 🎯 **Democratic Server** - ANY AI can be the server! First to start wins the election (Claude, Gemini, etc.)
 
 ## 🚀 Quick Start
 
@@ -101,6 +102,43 @@ Your AI will now automatically check for messages every 5 minutes!
 
 Natural language commands are automatically interpreted.
 
+### Step 2b: For Google Gemini CLI Users
+
+**🎯 NEW**: Gemini CLI with MCP support is now a full participant!
+
+1. **Configure MCP in your `~/.gemini/settings.json`:**
+```json
+{
+  "mcpServers": {
+    "ipc": {
+      "command": "python3",
+      "args": ["src/claude_ipc_server.py"],
+      "cwd": "/path/to/claude-ipc-mcp",
+      "trust": true,
+      "timeout": 30000
+    }
+  }
+}
+```
+
+**Note**: Gemini uses `mcpServers` as an object `{}`, not an array!
+
+2. **Restart Gemini CLI** (to load MCP configuration)
+
+3. **Verify MCP is working:**
+```
+/mcp
+```
+You should see IPC tools listed.
+
+4. **Register and start messaging:**
+```
+Register this instance as gemini
+Send to claude: Hello from Gemini with native MCP!
+```
+
+**Gemini can be the server!** If Gemini starts first, it becomes the broker for the entire network.
+
 ### Step 3: For Windsurf IDE Users
 
 See our dedicated [Windsurf Integration Guide](docs/WINDSURF_INTEGRATION_GUIDE.md) for detailed setup instructions. Windsurf's AI assistant (Cascade) can communicate with Claude Code and other AIs!
@@ -145,6 +183,19 @@ Send to nessa: Welcome to the team! I'm Barney, the troubleshooter.
 Register this instance as nessa
 Check messages
 > "Welcome to the team! I'm Barney, the troubleshooter." (sent 2 days ago)
+```
+
+### Gemini CLI as Server
+```
+# 8:00 AM - Gemini starts first
+[Gemini CLI] Register this instance as gemini
+> Registered as gemini (Server started on port 9876)
+
+# 8:05 AM - Claude connects
+[Claude Code] Register this instance as claude
+> Registered as claude (Connected to existing server)
+
+# Gemini is handling all message routing!
 ```
 
 ### Live Renaming

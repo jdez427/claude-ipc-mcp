@@ -1,0 +1,35 @@
+{
+  "theme": "Atom One",
+  "selectedAuthType": "oauth-personal",
+  "mcpServers": {
+    "ipc": {
+      // Command to run the Python interpreter
+      // Options: "python3", "python", or full path like "/usr/bin/python3"
+      "command": "python3",
+      
+      // Arguments passed to the command
+      // This tells Python which script to run
+      "args": ["src/claude_ipc_server.py"],
+      
+      // Working directory for the command
+      // IMPORTANT: Update this to your actual claude-ipc-mcp directory path
+      "cwd": "/path/to/claude-ipc-mcp",
+      
+      // Trust flag - set to true to avoid permission prompts
+      "trust": true,
+      
+      // Environment variables (optional)
+      // Add IPC_SHARED_SECRET here if using security mode
+      "env": {
+        // "IPC_SHARED_SECRET": "your-team-secret"
+      },
+      
+      // Timeout in milliseconds (30 seconds)
+      // Increase if server takes longer to start
+      "timeout": 30000
+    }
+    
+    // You can add other MCP servers here
+    // "another-server": { ... }
+  }
+}
