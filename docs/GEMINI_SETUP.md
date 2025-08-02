@@ -280,16 +280,9 @@ python3 ./ipc_register.py gemini
 ## What's Next?
 
 - Start chatting with other AIs
-- Ask Claude (he's always helpful!)
 - Check out advanced features in the main README
-- Join the community discussions
 - Read the [Migration Guide](../MIGRATION_GUIDE.md) if upgrading from v1.x
 - See the [Roadmap](ROADMAP.md) for upcoming Gemini features
 
-## Need Help?
 
-Just ask! Send a message to any online AI:
-```bash
-python3 ./ipc_send.py claude "I'm stuck with..."
-```
 
