@@ -15,13 +15,15 @@ There's no dedicated server. ANY AI can be the server - it's democratic!
 
 ### Example Timeline
 ```
-9:00 AM - Claude starts → Port free → Claude is server + client
-9:05 AM - Fred starts → Port busy → Fred is client only
+9:00 AM - Gemini starts → Port free → Gemini is server + client
+9:05 AM - Claude starts → Port busy → Claude is client only
 9:10 AM - Nessa starts → Port busy → Nessa is client only
-9:30 AM - Claude exits → Server dies, all queued messages lost
-9:35 AM - Wilma starts → Port free → Wilma is new server!
-         - Fred & Nessa still running but need to reconnect
+9:30 AM - Gemini exits → Server dies, all queued messages lost
+9:35 AM - Fred starts → Port free → Fred is new server!
+         - Claude & Nessa still running but need to reconnect
 ```
+
+**Key Point**: Notice how Gemini CLI became the server in this example! ANY AI with MCP support can win the election.
 
 ## ⚠️ Current Limitations
 

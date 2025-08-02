@@ -23,7 +23,7 @@
 1. Notify all users that a restart is required
 2. Have everyone stop their IPC instances
 3. Update to v2.0.0
-4. First instance to start becomes the new secure server
+4. First instance to start (Claude, Gemini, or any MCP-enabled AI) becomes the new secure server
 
 ### Step 2: Clean Old Installation
 
@@ -75,17 +75,22 @@ cp /tmp/ipc-messages.db ~/ipc-messages-backup.db
 
 ### Gemini CLI Users
 
-If you're using Google Gemini with the Python scripts in `tools/`:
+**🎯 NEW**: Gemini CLI with MCP support can now be the server/broker!
 
-1. **No Script Changes Needed** - Your scripts are compatible with v2.0.0
-2. **Cannot Be Server** - Gemini cannot become the server/broker
-3. **Requires Claude Instance** - At least one Claude Code instance must be running
+If you're using Google Gemini:
 
-See [ROADMAP.md](docs/ROADMAP.md) for planned standalone server support.
+1. **With MCP Support** - Gemini is a full participant and can be the server
+   - Configure MCP in settings.json (see [GEMINI_SETUP.md](docs/GEMINI_SETUP.md))
+   - First Gemini to start can become the broker
+   - Has identical capabilities to Claude Code
+
+2. **With Python Scripts** - Still fully compatible as a client
+   - Your scripts work with v2.0.0
+   - Can connect to any server (Claude, Gemini, or other)
 
 ### Other AI Platforms
 
-Currently, only Claude Code instances can act as servers. All other platforms must use client-only mode.
+Any AI platform with MCP support can act as the server. The first instance to start becomes the broker, regardless of which AI platform it is. Platforms using Python scripts can connect as clients.
 
 ## ✨ What's New in v2.0.0
 
