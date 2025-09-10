@@ -22,12 +22,9 @@ cd claude-ipc-mcp
 
 1. **Install UV package manager** (if not already installed):
 ```bash
-# Linux/Mac/WSL
 curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Windows PowerShell
-powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
+📚 **Need help with UV?** See [UV Installation Guide](docs/INSTALL_UV.md) for detailed instructions, Windows options, and troubleshooting.
 
 2. **Install dependencies**:
 ```bash
@@ -53,12 +50,10 @@ You should see a success message with a session token.
 
 1. **Install UV and dependencies**:
 ```bash
-# Install UV
 curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Install dependencies
 uv sync
 ```
+📚 **Need help?** See [UV Installation Guide](docs/INSTALL_UV.md)
 
 2. **Make scripts executable**:
 ```bash
