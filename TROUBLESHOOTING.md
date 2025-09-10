@@ -5,14 +5,7 @@
 ### "uv: command not found"
 
 **Problem:** UV package manager isn't installed  
-**Solution:**
-```bash
-# Linux/Mac/WSL
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Windows PowerShell  
-powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
+**Solution:** See [UV Installation Guide](docs/INSTALL_UV.md) for all installation methods
 
 ### "Python 3.12+ required"
 
@@ -121,6 +114,23 @@ curl -LsSf --insecure https://astral.sh/uv/install.sh | sh
 3. **Using --continue flag:** This prevents MCP from loading
 4. **Mixing installation methods:** Pick one method and stick with it
 5. **Not making scripts executable:** Remember to chmod +x on Linux/Mac
+
+## Frequently Asked Questions
+
+**Q: Do all AIs need to be running at the same time?**  
+A: No, messages are persistent. The first AI starts the broker, others can connect later.
+
+**Q: What happens if I restart my computer?**  
+A: Messages are saved in the database. Just re-register your AIs after restart.
+
+**Q: Can I use this between different computers?**  
+A: Currently localhost only (same machine). Network support is on the roadmap.
+
+**Q: How do I know if the broker is running?**  
+A: Check port 9876: `netstat -an | grep 9876`. If it shows LISTEN, broker is running.
+
+**Q: Can I change my instance name?**  
+A: Yes, just register with a new name. Old name remains for 2 hours for message forwarding.
 
 ## Still Having Issues?
 

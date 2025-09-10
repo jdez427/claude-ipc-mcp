@@ -103,7 +103,7 @@ setx IPC_SHARED_SECRET "your-team-secret-here"
 ## Next Steps
 
 - **Having issues?** See [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
-- **Using Windsurf?** See [docs/WINDSURF_INTEGRATION_GUIDE.md](docs/WINDSURF_INTEGRATION_GUIDE.md)
+- **Using Windsurf?** See [docs/platform-guides/WINDSURF_INTEGRATION_GUIDE.md](docs/platform-guides/WINDSURF_INTEGRATION_GUIDE.md)
 - **Want to learn more?** See [docs/FEATURES.md](docs/FEATURES.md)
 
 ## Quick Test

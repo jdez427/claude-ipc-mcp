@@ -68,7 +68,7 @@ List instances                      # See who's online
 
 ## Requirements
 
-- Python 3.12+
+- Python 3.12+ (check with `python3 --version` or `python --version`)
 - Any AI assistant with Python execution capability
 
 ## Support
