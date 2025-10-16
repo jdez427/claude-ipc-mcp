@@ -4,7 +4,7 @@
 echo "==========================================="
 echo "Claude IPC MCP Installation (using uv)"
 echo "==========================================="
-
+ 
 # Check for uv
 if ! command -v uv &> /dev/null; then
     echo "❌ uv is required but not found"

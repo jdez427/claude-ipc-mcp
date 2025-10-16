@@ -554,16 +554,26 @@ Size: {size_kb:.1f}KB
         if not session_token:
             return None
             
-        # Hash the provided token to compare with database
-        token_hash = self._hash_token(session_token)
+        # First check in-memory sessions (faster)
+        if session_token in self.sessions:
+            session_info = self.sessions[session_token]
+            # Check if session is not expired (24 hours)
+            if (datetime.now() - session_info["created_at"]).total_seconds() < 24 * 3600:
+                return session_info["instance_id"]
+            else:
+                # Clean up expired session
+                del self.sessions[session_token]
         
-        # Check database for valid session
+        # Fallback to database check
         if not self.db_path:
             return None
             
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
+            
+            # Hash the provided token to compare with database
+            token_hash = self._hash_token(session_token)
             
             # Check if token exists and is not expired
             cursor.execute('''
@@ -576,6 +586,11 @@ Size: {size_kb:.1f}KB
             conn.close()
             
             if result:
+                # Restore to in-memory cache
+                self.sessions[session_token] = {
+                    "instance_id": result[0],
+                    "created_at": datetime.now()
+                }
                 return result[0]  # Return instance_id
             return None
             
@@ -626,8 +641,14 @@ Size: {size_kb:.1f}KB
                 # Generate session token
                 session_token = secrets.token_urlsafe(32)
                 
-                # Register instance
+                # Register instance (allow multiple sessions per instance_id)
                 self.instances[instance_id] = datetime.now()
+                
+                # Store session mapping (multiple sessions can map to same instance_id)
+                self.sessions[session_token] = {
+                    "instance_id": instance_id,
+                    "created_at": datetime.now()
+                }
                 
                 # Save to database
                 self._save_instance_to_db(instance_id)
